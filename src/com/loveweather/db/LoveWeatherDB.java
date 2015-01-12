@@ -45,9 +45,9 @@ public class LoveWeatherDB {
 		return loveWeatherDB;
 	}
 	/**
-	 * 将Provice实例存储到数据库
+	 * 将Province实例存储到数据库
 	 */
-	public void saveProvice(Province province)
+	public void saveProvince(Province province)
 	{
 		if(province!=null)
 		{
@@ -85,7 +85,7 @@ public class LoveWeatherDB {
 			ContentValues values=new ContentValues();
 			values.put("city_name",city.getCityName());
 			values.put("city_code",city.getCityCode());
-			values.put("provincce_id",city.getProvinceId());
+			values.put("province_id",city.getProvinceId());
 			db.insert("City",null,values);
 		}
 	}
@@ -148,24 +148,5 @@ public class LoveWeatherDB {
 		return list;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
