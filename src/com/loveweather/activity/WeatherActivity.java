@@ -119,7 +119,7 @@ public class WeatherActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * 查询县级代号所对应的天气
+	 * 查询县级代号所对应的天气,为了获取weatherCode
 	 */
 	private void queryWeatherCode(String countyCode) {
 		String address = "http://www.weather.com.cn/data/list3/city"
@@ -159,7 +159,7 @@ public class WeatherActivity extends Activity implements OnClickListener {
 				} else if ("weatherCode".equals(type)) {
 					// 处理服务器返回的天气信息
 					Utility.handleWeatherResponse(WeatherActivity.this,
-							response);
+							response);//把天气信息保存到数据库
 					runOnUiThread(new Runnable() {
 
 						@Override

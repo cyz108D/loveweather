@@ -131,7 +131,7 @@ public class ChooseAreaActivity extends Activity {
 	{
 		provinceList =loveWeatherDB.loadProvinces();
 		if(provinceList.size()>0)
-		{
+		{//主
 			dataList.clear();
 			for(Province province :provinceList)
 			{
@@ -143,7 +143,7 @@ public class ChooseAreaActivity extends Activity {
 			currentLevel=LEVEL_PROVINCE;
 		}
 		else
-		{
+		{//次
 			queryFromServer(null,"province");
 		}
 	}
@@ -155,7 +155,7 @@ public class ChooseAreaActivity extends Activity {
 	{
 		cityList =loveWeatherDB.loadCities(selectedProvince.getId());
 		if(cityList.size()>0)
-		{
+		{//主
 			dataList.clear();
 			for(City city:cityList)
 			{
@@ -167,7 +167,7 @@ public class ChooseAreaActivity extends Activity {
 			currentLevel=LEVEL_CITY;
 		}
 		else
-		{
+		{//次
 			queryFromServer(selectedProvince.getProvinceCode(),"city");			
 		}
 	}
@@ -178,7 +178,8 @@ public class ChooseAreaActivity extends Activity {
 	private void queryCounties()
 	{
 		countyList =loveWeatherDB.loadCounties(selectedCity.getId());
-		if (countyList.size()>0) {
+		if (countyList.size()>0) 
+		{//主
 			dataList.clear();
 			for(County county:countyList)
 			{
@@ -191,7 +192,7 @@ public class ChooseAreaActivity extends Activity {
 			
 		}
 		else
-		{
+		{//次
 			queryFromServer(selectedCity.getCityCode(),"county");
 		}
 	}
@@ -221,14 +222,17 @@ public class ChooseAreaActivity extends Activity {
 				boolean result=false;
 				if("province".equals(type))
 				{
+					//把省级保存到数据库
 					result=Utility.handleProvicesResponse(loveWeatherDB, response);
 				}
 				else if("city".equals(type))
 				{
+					//把市级保存到数据库
 					result=Utility.handleCitiesResponse(loveWeatherDB, response, selectedProvince.getId());
 				}
 				else if("county".equals(type))
 				{
+					//把县级保存到数据库
 					result=Utility.handleCountiesResponse(loveWeatherDB, response, selectedCity.getId());
 				}
 				if (result) {
